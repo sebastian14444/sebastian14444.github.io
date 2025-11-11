@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Sebastián Gómez Ureña - Desarrollador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ESTILOS CSS */
+        :root {
+            --color-primario: #2c3e50;
+            --color-secundario: #3498db;
+            --color-texto: #333;
+            --color-fondo: #f9f9f9;
+            --color-blanco: #ffffff;
+            --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transicion: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-texto);
+            background-color: var(--color-fondo);
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--color-primario), #1a2530);
+            color: var(--color-blanco);
+            padding: 2.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .foto-perfil {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-blanco);
+            box-shadow: var(--sombra);
+            margin: 0 auto 1.5rem;
+            display: block;
+            background: linear-gradient(45deg, #ddd, #f5f5f5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitulo {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        section {
+            padding: 3rem 0;
+            background-color: var(--color-blanco);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--sombra);
+            border-radius: 8px;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--color-fondo);
+        }
+        
+        h2 {
+            color: var(--color-primario);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-secundario);
+            display: inline-block;
+        }
+        
+        .info-personal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .info-item {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .info-item h3 {
+            color: var(--color-secundario);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .certificaciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .certificado {
+            background-color: var(--color-blanco);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            border-left: 4px solid var(--color-secundario);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .certificado::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-secundario), var(--color-primario));
+        }
+        
+        .certificado:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .certificado h3 {
+            color: var(--color-primario);
+            margin-bottom: 0.5rem;
+        }
+        
+        .institucion {
+            color: var(--color-secundario);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .año {
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nivel-experiencia {
+            margin: 0.8rem 0;
+        }
+        
+        .nivel {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .nivel-junior {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .nivel-intermedio {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #bbdefb;
+        }
+        
+        .nivel-avanzado {
+            background-color: #fff3e0;
+            color: #ef6c00;
+            border: 1px solid #ffe0b2;
+        }
+        
+        .contacto {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .contacto-item {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .icono {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-secundario), #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-blanco);
+            font-size: 1.2rem;
+            box-shadow: var(--sombra);
+        }
+        
+        .redes-sociales {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .red-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transicion);
+            box-shadow: var(--sombra);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .red-social:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .github {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .github:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .instagram {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .instagram:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .gmail {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .gmail:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .enlace-contacto {
+            color: var(--color-primario);
+            text-decoration: none;
+            transition: var(--transicion);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .enlace-contacto:hover {
+            color: var(--color-secundario);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--color-primario), #1a2530);
+            color: var(--color-blanco);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .foto-perfil {
+                width: 150px;
+                height: 150px;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+            
+            .info-personal, .contacto {
+                flex-direction: column;
+            }
+            
+            .certificaciones {
+                grid-template-columns: 1fr;
+            }
+            
+            .redes-sociales {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado con foto y nombre -->
+    <header>
+        <div class="container">
+            
+                <img src="c:\Users\nozed\OneDrive\Desktop\MI PAGINA WEB\FOTO.jpg" alt="John Sebastián Gómez Ureña" class="foto-perfil">
+        
+            <div class="fotos"></div>
+            <h1>John Sebastián Gómez Ureña</h1>
+            <p class="subtitulo">Programador Junior & Técnico en Sistemas</p>
+            
+            <div class="redes-sociales">
+                <a href="https://github.com/sebastian14444" class="red-social github" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/sebax_0314/" class="red-social instagram" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://mail.google.com/mail/u/1/#inbox" class="red-social gmail" target="_blank" title="Gmail">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Sección de información personal -->
+        <section id="informacion-personal">
+            <h2><i class="fas fa-user"></i> Información Personal</h2>
+            <div class="info-personal">
+                <div class="info-item">
+                    <h3><i class="fas fa-map-marker-alt"></i> Ubicación</h3>
+                    <p>Cúcuta, Colombia</p>
+                </div>
+                <div class="info-item">
+                    <h3><i class="fas fa-birthday-cake"></i> Fecha de Nacimiento</h3>
+                    <p>14 de septiembre de 2003</p>
+                </div>
+                <div class="info-item">
+                    <h3><i class="fas fa-user-tie"></i> Perfil</h3>
+                    <p>Programador Junior con formación técnica en sistemas y análisis de datos. Apasionado por el desarrollo de software y el análisis de información.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de certificaciones -->
+        <section id="certificaciones">
+            <h2><i class="fas fa-certificate"></i> Certificaciones</h2>
+            <div class="certificaciones">
+                <div class="certificado">
+                    <h3>Técnico en Sistemas</h3>
+                    <p class="institucion"><i class="fas fa-university"></i> SENA</p>
+                    <div class="nivel-experiencia">
+                        <span class="nivel nivel-intermedio">Nivel Intermedio</span>
+                    </div>
+                    <p class="año"><i class="far fa-calendar-alt"></i> 2022</p>
+                </div>
+                <div class="certificado">
+                    <h3>Análisis de Datos Junior</h3>
+                    <p class="institucion"><i class="fas fa-university"></i> Telento Tech</p>
+                    <div class="nivel-experiencia">
+                        <span class="nivel nivel-junior">Nivel Junior</span>
+                    </div>
+                    <p class="año"><i class="far fa-calendar-alt"></i> 2025</p>
+                </div>
+                <div class="certificado">
+                    <h3>Técnico en Análisis y Desarrollo de Sistemas</h3>
+                    <p class="institucion"><i class="fas fa-university"></i> Instituto Sin Fronteras</p>
+                    <div class="nivel-experiencia">
+                        <span class="nivel nivel-intermedio">Nivel Intermedio</span>
+                    </div>
+                    <p class="año"><i class="far fa-calendar-alt"></i> 2025</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de contacto -->
+        <section id="contacto">
+            <h2><i class="fas fa-address-book"></i> Contacto</h2>
+            <div class="contacto">
+                <div class="contacto-item">
+                    <div class="icono">📱</div>
+                    <div>
+                        <h3>Teléfono</h3>
+                        <p>3155389968</p>
+                    </div>
+                </div>
+                <div class="contacto-item">
+                    <div class="icono">✉️</div>
+                    <div>
+                        <h3>Email</h3>
+                        <a href="https://mail.google.com/mail/u/1/#inbox" class="enlace-contacto" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> sebastiangomez09k@gmail.com
+                        </a>
+                    </div>
+                </div>
+                <div class="contacto-item">
+                    <div class="icono">📷</div>
+                    <div>
+                        <h3>Instagram</h3>
+                        <a href="https://www.instagram.com/sebax_0314/" class="enlace-contacto" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> sebax_0314
+                        </a>
+                    </div>
+                </div>
+                <div class="contacto-item">
+                    <div class="icono"><i class="fab fa-github"></i></div>
+                    <div>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/sebastian14444" class="enlace-contacto" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> sebastian14444
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 John Sebastián Gómez Ureña. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
